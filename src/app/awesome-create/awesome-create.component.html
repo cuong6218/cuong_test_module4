@@ -2,14 +2,29 @@
     <div class="form-group">
       <label>Tag</label>
       <input type="text" class="form-control" formControlName="tag" placeholder="Tag">
+      <div *ngIf="tag.invalid && tag.touched" class="text-danger">
+        <div *ngIf="tag.errors.required">
+            Tag is required.
+        </div>
+    </div>
     </div>
     <div class="form-group">
         <label>Url</label>
         <input type="text" class="form-control" formControlName="url" placeholder="https://">
+        <div *ngIf="url.invalid && url.touched" class="text-danger">
+            <div *ngIf="url.errors.required">
+                Url is required.
+            </div>
+        </div>
       </div>
       <div class="form-group">
         <label>Description</label>
         <textarea formControlName="descriptions" class="form-control" placeholder="awesome!"></textarea>
+        <div *ngIf="descriptions.invalid && descriptions.touched" class="text-danger">
+            <div *ngIf="descriptions.errors.required">
+                Descriptions is required.
+            </div>
+        </div>
       </div>
     <button class="btn btn-primary">Submit</button>
   </form>

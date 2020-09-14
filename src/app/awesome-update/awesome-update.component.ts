@@ -1,6 +1,6 @@
 import { IAwesome } from './../iawesome';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AwesomeService } from '../services/awesome.service';
 
@@ -20,9 +20,9 @@ export class AwesomeUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateAwesomeForm = this.fb.group({
-      tag: [''],
-      url: [''],
-      descriptions: ['']
+      tag: ['', [Validators.required]],
+      url: ['', [Validators.required]],
+      descriptions: ['', [Validators.required]]
     })
     this.awesomeService.getAwesomeById(this.id).subscribe(data => {
       this.awesome = data
@@ -40,6 +40,10 @@ export class AwesomeUpdateComponent implements OnInit {
     if(confirm('Do you want to delete this item?'))
     this.awesomeService.delete(this.id).subscribe(data => {
       this.router.navigate(['/awesomes']);
-    })
+    })  
+  }
+  cancel()
+  {
+    this.router.navigate(['/awesomes']);
   }
 }

@@ -1,6 +1,6 @@
 import { IAwesome } from './../iawesome';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AwesomeService } from '../services/awesome.service';
 
@@ -18,11 +18,23 @@ export class AwesomeCreateComponent implements OnInit {
   ngOnInit(): void {
     
     this.createAwesomeForm = this.fb.group({
-      id: [''],
-      tag: [''],
-      url: [''],
-      descriptions: ['']
+      id: ['', [Validators.required]],
+      tag: ['', [Validators.required]],
+      url: ['', [Validators.required]],
+      descriptions: ['', [Validators.required]]
     })
+  }
+  get tag()
+  {
+    return this.createAwesomeForm.get('tag');
+  }
+  get url()
+  {
+    return this.createAwesomeForm.get('url');
+  }
+  get descriptions()
+  {
+    return this.createAwesomeForm.get('descriptions');
   }
   createAwesome()
   {
