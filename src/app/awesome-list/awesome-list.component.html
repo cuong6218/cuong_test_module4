@@ -11,9 +11,8 @@
     <tbody>
       <tr *ngFor="let awesome of awesomes | async">
         <td>{{awesome.tag}}</td>
-        <td>{{awesome.url}}</td>
+        <td><a [routerLink]="['/awesomes/update',awesome.id ]">{{awesome.url}}</a></td>
         <td>{{awesome.descriptions}}</td>
-        <td><button class="btn btn-primary" [routerLink]="['/awesomes/update',awesome.id ]">Update</button></td>
       </tr>
     </tbody>
   </table>

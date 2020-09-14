@@ -37,6 +37,7 @@ export class AwesomeUpdateComponent implements OnInit {
   }
   delete()
   {
+    if(confirm('Do you want to delete this item?'))
     this.awesomeService.delete(this.id).subscribe(data => {
       this.router.navigate(['/awesomes']);
     })
