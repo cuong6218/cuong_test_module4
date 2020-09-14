@@ -12,7 +12,7 @@
     <tbody>
       <tr *ngFor="let awesome of awesomes | async">
         <td>{{awesome.tag}}</td>
-        <td><a >{{awesome.url}}</a></td>
+        <td>{{awesome.url}}</td>
         <td>{{awesome.descriptions}}</td>
         <td><button class="btn btn-primary" [routerLink]="['/awesomes/update',awesome.id ]">Update</button></td>
       </tr>
